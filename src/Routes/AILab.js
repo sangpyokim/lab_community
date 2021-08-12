@@ -34,13 +34,13 @@ const SLink = styled(Link)`
 `
 
 
-function Home (props) {
+const AILab = () => {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await boardApi.getFreeBoardList()
+        const { data } = await boardApi.getAiBoardList()
         setUsers(data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
         setError(e);
@@ -51,38 +51,35 @@ function Home (props) {
 
   if (error) return <div>에러가 발생하였습니다</div>;
   if (!users) return null;
-
-  return (
-    <>
-    <Container>
-      <Able> 
-        <thead>
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Title</th>
-            <th scope="col">작성시간</th>
-            <th scope="col">작성자</th>
-        </tr>
-        </thead>
-        <tbody>
-          {users.dtoList.map( res => (
-            <tr key={res.bno}>
-              <Td scope="row">{res.bno}</Td>
-              <Td1 title={res.title.substring(0,30)} >
-                <SLink to={`/get_board/${res.bno}`} >{res.title}</SLink>
-              </Td1>
-              <Td2>{res.modDate.substring(0,10)}</Td2>
-              <Td>{res.writer}</Td>
-            </tr>
-          ))}
-        </tbody>
-      </Able>
-    </Container>
-  <Paginations users={users} />
-  </>
-  );
+    return(
+      <>
+      <Container>
+        <Able> 
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Title</th>
+              <th scope="col">작성시간</th>
+              <th scope="col">작성자</th>
+          </tr>
+          </thead>
+          <tbody>
+            {users.dtoList.map( res => (
+              <tr key={res.bno}>
+                <Td scope="row">{res.bno}</Td>
+                <Td1 title={res.title.substring(0,30)} >
+                  <SLink to={`/get_board_AI/${res.bno}`} >{res.title}</SLink>
+                </Td1>
+                <Td2>{res.modDate.substring(0,10)}</Td2>
+                <Td>{res.writer}</Td>
+              </tr>
+            ))}
+          </tbody>
+        </Able>
+      </Container>
+    <Paginations users={users} />
+    </>
+    )
 }
 
-
-
-export default Home
+export default AILab

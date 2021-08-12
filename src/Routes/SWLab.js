@@ -34,13 +34,13 @@ const SLink = styled(Link)`
 `
 
 
-function Home (props) {
+function SWLab (props) {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await boardApi.getFreeBoardList()
+        const { data } = await boardApi.getSWBoardList()
         setUsers(data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
         setError(e);
@@ -51,7 +51,6 @@ function Home (props) {
 
   if (error) return <div>에러가 발생하였습니다</div>;
   if (!users) return null;
-
   return (
     <>
     <Container>
@@ -69,7 +68,7 @@ function Home (props) {
             <tr key={res.bno}>
               <Td scope="row">{res.bno}</Td>
               <Td1 title={res.title.substring(0,30)} >
-                <SLink to={`/get_board/${res.bno}`} >{res.title}</SLink>
+                <SLink to={`/get_board_software/${res.bno}`} >{res.title}</SLink>
               </Td1>
               <Td2>{res.modDate.substring(0,10)}</Td2>
               <Td>{res.writer}</Td>
@@ -85,4 +84,4 @@ function Home (props) {
 
 
 
-export default Home
+export default SWLab

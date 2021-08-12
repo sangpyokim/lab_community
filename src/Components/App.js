@@ -1,14 +1,11 @@
 import React from 'react';
-import Footer from './Footer';
-import Home from '../Routes/Home';
-import Sidebar from './Sidebar';
+import AppRouter from './Router';
+
 
 function App() {
   return (
     <>
-    <Sidebar />
-    <Home />
-    <Footer/>
+      <AppRouter / >
     </>
   );
 }

@@ -25,8 +25,8 @@ const Foot = styled.div`
 `
 
 const Container = styled.div`
-    position:fixed;
-    bottom:10px;
+    position:absolute;
+    bottom: 25px;
     height: 100px;
     width:100%;
 `
@@ -47,7 +47,7 @@ const Footer = () => {
                     </Adress>
                 </Form>
                 <Form>
-                    Copyright&copy;김상표, 김효중
+                    Copyright&copy; 김상표, 김효중
                 </Form>
             </Foot>
 
